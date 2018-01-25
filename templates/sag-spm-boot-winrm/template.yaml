@@ -16,33 +16,14 @@ environments:
     # spm.credentials.key: SECURE_ADMINISTRATOR  # SPM Administrator custom credentials
 
     actions:
-      bootstrap.ps1:
+      bootstrap.bat:
         target: WINDOWS 
         description: Bootstrap SPM on remote hosts
         phase: pre 
-        script: >
-          .\profiles\CCE\templates\sag-spm-boot-winrm\push-bootstrap.ps1 
-          -Computername ${nodes} 
-          -RemoteTempPath ${os.temp.dir} 
-          -LocalInstallerZip .\profiles\CCE\data\installers\${cc.installer} 
-          -RemoteInstallPath ${install.dir} 
-          -AcceptLicense
-          -PlainCredentials ${os.username}:${os.password}
+        script: |
+          powershell.exe -file ${install.dir}\profiles\CCE\data\templates\composite\sag-spm-boot-winrm\push-bootstrap.ps1 -Computername ${nodes} -RemoteTempPath ${os.temp.dir} -LocalInstallerZip ${install.dir}\profiles\CCE\data\installers\${cc.installer} -RemoteInstallPath ${install.dir} -AcceptLicense -PlainCredentials ${os.username}:${os.password}
 
-layers:
-  infra:
-    templates:
-      - spm
 
-templates:
-  spm: 
-    products:
-      SPM:
-        OSGI-SPM: # REQUIRED for registering OSGI-SPM as infrastructure layer instance
-
-provision:
-  default:
-    infra: ${nodes}
 
 nodes:
   default:
