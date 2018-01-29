@@ -29,10 +29,10 @@ PS> Set-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB 2048
 
 Bootstrap remote Windows machines on host1 and host2 with 10.2 version of SPM into C:\SoftwareAG2
 installation directory on port 8292. The remote connection is done using sagadmin user account that
-has administrative privileges on host1 and host2.
+has administrative privileges on host1 and host2. List of hosts should be given as yaml list i.e. ["host1","host2"]
 
 ```bash
-sagcc exec templates composite apply sag-spm-boot-winrm nodes=host1,host2 \
+sagcc exec templates composite apply sag-spm-boot-winrm nodes=["host1"],["host2"] \
   cc.installer=cc-def-10.2-milestone-w64.zip \
   install.dir=C:\\SoftwareaAG2 \
   spm.port=8292 \
