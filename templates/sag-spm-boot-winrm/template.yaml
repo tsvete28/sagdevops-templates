@@ -6,8 +6,8 @@ environments:
     nodes: ${}                  # REQUIRED: remote hostnames to bootstrap: host1,host2
     cc.installer: ${}           # REQUIRED: command central bootstrap installer
     # os.credentials.key: ${}     # REQUIRED: Windows credentials for remote hosts connection
-    os.username: vmtest         # TODO: need to be able to extrac from os.credentials.key or not use at all
-    os.password: wmtest         # TODO: need to be able to extrac from os.credentials.key or not use at all
+    os.username: ${}         # TODO: need to be able to extrac from os.credentials.key or not use at all
+    os.password: ${}         # TODO: need to be able to extrac from os.credentials.key or not use at all
 
     install.dir: C:\SoftwareAG # Remote installation dir
     spm.port: 8092              # SPM HTTP port
@@ -22,7 +22,22 @@ environments:
         phase: pre 
         script: |
           powershell.exe -file ${install.dir}\profiles\CCE\data\templates\composite\sag-spm-boot-winrm\push-bootstrap.ps1 -Computername ${nodes} -RemoteTempPath ${os.temp.dir} -LocalInstallerZip ${install.dir}\profiles\CCE\data\installers\${cc.installer} -RemoteInstallPath ${install.dir} -AcceptLicense -PlainCredentials ${os.username}:${os.password}
+   
 
+layers:
+  infra:
+    templates:
+      - spm
+
+templates:
+  spm:
+    products:
+      SPM:
+        OSGI-SPM: # REQUIRED for registering OSGI-SPM as infrastructure layer instance
+
+provision:
+  default:
+    infra: ${nodes}
 
 
 nodes:
@@ -32,5 +47,4 @@ nodes:
       secure: false                     # always start with HTTP
 #      credentials: ${spm.credentials.key} # NOT yet supported
       bootstrapInfo:
-        installer: ${cc.installer}      # NOT used, but forces Layers UI to show the selector
         installDir: ${install.dir}      # For validation only
