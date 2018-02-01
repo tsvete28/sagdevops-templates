@@ -67,3 +67,10 @@ Known problems:
 ## Using from Stacks UI
 
 * Requires Command Central 10.2
+
+
+## Local Debuging from Mac
+
+```bash
+pwsh -f templates/sag-spm-boot-winrm/push-bootstrap.ps1 -Computername \["bgninjabvt01"\] -RemoteTempPath C:\Windows\Temp -LocalInstallerZip ~/sag/cc/profiles/CCE/data/installers/cc-def-10.2-milestone-w64.zip -RemoteInstallPath C:\sag2 -AcceptLicense -PlainCredentials vmtest:vmtest
+```
