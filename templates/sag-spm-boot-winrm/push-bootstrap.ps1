@@ -108,17 +108,17 @@ param
 	[ValidateNotNullOrEmpty()]
 	[string]$PlainCredentials,
 	
-	[string]$RemoteTempPath="c:\temp",
+	[string]$RemoteTempPath,
 	
-	[string]$RemoteInstallPath="c:\softwareag\",
+	[string]$RemoteInstallPath,
 	
-	[string]$LocalInstallerZip="C:\softwareag\profiles\CCE\data\installers\cc-def-10.2-milestone-w64.zip",
+	[string]$LocalInstallerZip,
 	
-	[string]$AdministratorPassword="manage",
+	[string]$AdministratorPassword,
 	
-	[string]$HttpPort="8092",
+	[string]$HttpPort,
 	
-	[string]$HttpsPort="8093",
+	[string]$HttpsPort,
 	
 	[switch]$AcceptLicense
 )

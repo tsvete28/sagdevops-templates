@@ -43,14 +43,14 @@ templates:
                       Template:
                         "@alias": sag-spm-boot-ssh
 
-                # CCE-LAYER-TYPES-INFRA-REMOTE-WINDOWS:
-                #   "@name": INFRA-REMOTE-WINDOWS
-                #   Description: Create installations on remote Windows machines using WinRM
-                #   Type: INFRASTRUCTURE
-                #   Scalable: 'true'
-                #   Templates:
-                #       Template:
-                #         "@alias": sag-spm-boot-winrm                        
+                CCE-LAYER-TYPES-INFRA-REMOTE-WINDOWS:
+                  "@name": INFRA-REMOTE-WINDOWS
+                  Description: Create installations on remote Windows machines using WinRM
+                  Type: INFRASTRUCTURE
+                  Scalable: 'true'
+                  Templates:
+                      Template:
+                        "@alias": sag-spm-boot-winrm                        
                       
                 CCE-LAYER-TYPES-UM-SERVER:
                   "@name": UM-SERVER
