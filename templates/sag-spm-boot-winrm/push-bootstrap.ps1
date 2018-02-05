@@ -1,4 +1,3 @@
-
 param
 (
 	[Parameter(Mandatory)]
@@ -8,8 +7,6 @@ param
 	[Parameter(Mandatory)]
 	[ValidateNotNullOrEmpty()]
 	[string]$PlainCredentials,
-	
-	[string]$RemoteTempPath="c:\temp",
 	
 	[string]$RemoteInstallPath="c:\softwareag\",
 	
@@ -41,13 +38,14 @@ if(($PlainCredentials.Length -gt 0 ) -and ($PlainCredentials.Contains(":"))){
 }
 foreach ($comp in $computers.Replace("[","").Replace("]","").Replace("`"","")){
 	start-job -ScriptBlock { 
-		param($comp,$cred,$srz,$rtp,$rip,$iar) 
+		param($comp,$cred,$srz,$rip,$iar)
 		$s=New-PSSession -ComputerName $comp -Credential $cred
 		if(!$s){
 			write-error "Can not connect to host: $comp"
 			exit 2
 		}
 		"Processing computer $comp"
+		$rtp=(invoke-command -Session $s {$env:TEMP})+"\sagtemp\"
 		"Creating temp folder $rtp"
 		Invoke-Command -Session $s -ScriptBlock {param($rtp)
 			if(!(Test-Path -path $rtp)){
@@ -61,7 +59,7 @@ foreach ($comp in $computers.Replace("[","").Replace("]","").Replace("`"","")){
 		}else{
 			"Uploading zipfile $srz"
 			get-date | select DateTime
-			Copy-Item -Path $srz -Destination c:\temp -ToSession $s
+			Copy-Item -Path $srz -Destination $rtp -ToSession $s
 			"Upload finished"
 			get-date | select DateTime
 		}
@@ -89,11 +87,8 @@ foreach ($comp in $computers.Replace("[","").Replace("]","").Replace("`"","")){
 			}
 		} -ArgumentList $rtp,$iar
 		get-pssession | Remove-PSSession
-	} -ArgumentList $comp,$credentials,$LocalInstallerZip,$RemoteTempPath,$RemoteInstallPath,$InstallerArgs
+	} -ArgumentList $comp,$credentials,$LocalInstallerZip,$RemoteInstallPath,$InstallerArgs
 }
 get-job|wait-job
 get-job|receive-job
 get-job|remove-job
-
-
-
