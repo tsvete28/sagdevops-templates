@@ -12,14 +12,12 @@
 * The connecting user account must have Administrator privileges
 * WinRM service must be enabled
 * Memory used by powershell should be at 2GB limit or more
-* Script execution policy should be set to unrestricted
 
 Run these commands from the powershell window as Administrator to ensure the last two requirements:
 
 ```powershell
 PS> Enable-PSRemoting -SkipNetworkProfileCheck
 PS> Set-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB 2048
-PS> Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 ```
 Note: Although, for production it is not recommended to keep WinRM enabled, here are the steps to enable it at boot time:
 * Open Services tool (Win+R -> services.msc), locate service "Windows Remote Management (WS-Management)" and in properties change the start type to: "Autostart"
@@ -33,6 +31,10 @@ Note: Although, for production it is not recommended to keep WinRM enabled, here
 * DotNet 4.5 or higher (prerequisite for recent powershell versions). Follow the official documenation for installing or upgrading dotNet Framework here:https://www.microsoft.com/net/download/windows
 * Powershell version 5.0 or higher. 
   Follow the official documenation for upgrading to powershell 5.1 for relevant operating system version and platform here https://www.microsoft.com/en-us/download/details.aspx?id=54616 (have in mind that this requires restart)
+  * Script execution policy should be set to unrestricted
+```
+PS> Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+```
 * Must have Command Central bootstrap installer for Windows (.zip) saved in `CC_HOME\profiles\CCE\data\installers` folder. Very by running:
 
 ```bash
