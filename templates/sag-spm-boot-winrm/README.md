@@ -12,12 +12,14 @@
 * The connecting user account must have Administrator privileges
 * WinRM service must be enabled
 * Memory used by powershell should be at 2GB limit or more
+* Script execution policy should be set to unrestricted
 
 Run these commands from the powershell window as Administrator to ensure the last two requirements:
 
 ```powershell
 PS> Enable-PSRemoting -SkipNetworkProfileCheck
 PS> Set-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB 2048
+PS> Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 ```
 Note: Although, for production it is not recommended to keep WinRM enabled, here are the steps to enable it at boot time:
 * Open Services tool (Win+R -> services.msc), locate service "Windows Remote Management (WS-Management)" and in properties change the start type to: "Autostart"
