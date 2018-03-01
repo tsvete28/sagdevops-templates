@@ -32,7 +32,7 @@ Note: Although, for production it is not recommended to keep WinRM enabled, here
 * Powershell version 5.0 or higher. 
   Follow the official documenation for upgrading to powershell 5.1 for relevant operating system version and platform here https://www.microsoft.com/en-us/download/details.aspx?id=54616 (have in mind that this requires restart)
   * Script execution policy should be set to unrestricted
-```
+```powershell
 PS> Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 ```
 * Must have Command Central bootstrap installer for Windows (.zip) saved in `CC_HOME\profiles\CCE\data\installers` folder. Very by running:
