@@ -29,8 +29,9 @@ Note: Although, for production it is not recommended to keep WinRM enabled, here
 
 * Windows 2007 of later
 * DotNet 4.5 or higher (prerequisite for recent powershell versions). Follow the official documenation for installing or upgrading dotNet Framework here:https://www.microsoft.com/net/download/windows
-* Powershell version 5.0 or higher. 
+* Powershell version 5.1 or higher. 
   Follow the official documenation for upgrading to powershell 5.1 for relevant operating system version and platform here https://www.microsoft.com/en-us/download/details.aspx?id=54616 (have in mind that this requires restart)
+  If Powershel 5.1 is not available for the requested OS, please install Powershell 6 as described here: https://github.com/PowerShell/PowerShell/releases . Have in mind that running Powershell 6 is with command ```pwsh```
   * Script execution policy should be set to unrestricted
 ```powershell
 PS> Set-ExecutionPolicy -ExecutionPolicy Unrestricted
