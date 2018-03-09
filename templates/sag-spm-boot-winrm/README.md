@@ -29,15 +29,13 @@ Note: Although, for production it is not recommended to keep WinRM enabled, here
 
 * Windows 2007 of later
 * DotNet 4.5 or higher (prerequisite for recent powershell versions). Follow the official documenation for installing or upgrading dotNet Framework here:https://www.microsoft.com/net/download/windows
-* Powershell version 5.1 or higher. 
-  Follow the official documenation for upgrading to powershell 5.1 for relevant operating system version and platform here https://www.microsoft.com/en-us/download/details.aspx?id=54616 (have in mind that this requires restart)
-  
-  If Powershel 5.1 is not available for the requested OS, please install Powershell 6 as described here: https://github.com/PowerShell/PowerShell/releases . Have in mind that running Powershell 6 is with command ```pwsh```
-  * Script execution policy should be set to unrestricted
+* Powershell version 6 or later.
+  Follow the official documenation for installing powershell 6 for relevant operating system version and platform here https://github.com/PowerShell/PowerShell . For Windows 7 install "Windows 10 Universal C Runtime" as might be necessary.
+* Script execution policy should be set to unrestricted
 ```powershell
 PS> Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 ```
-* Must have Command Central bootstrap installer for Windows (.zip) saved in `CC_HOME\profiles\CCE\data\installers` folder. Very by running:
+* Must have Command Central bootstrap installer for Windows (.zip) saved in `CC_HOME\profiles\CCE\data\installers` folder. Verify by running:
 
 ```bash
 sagcc list provisioning bootstrap installers platform=w64
