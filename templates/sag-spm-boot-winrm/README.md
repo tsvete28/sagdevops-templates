@@ -30,7 +30,7 @@ Note: Although, for production it is not recommended to keep WinRM enabled, here
 * Windows 2007 of later
 * DotNet 4.5 or higher (prerequisite for recent powershell versions). Follow the official documenation for installing or upgrading dotNet Framework here:https://www.microsoft.com/net/download/windows
 * Powershell version 6 or later.
-  Follow the official documenation for installing powershell 6 for relevant operating system version and platform here https://github.com/PowerShell/PowerShell . For Windows 7 install "Windows 10 Universal C Runtime" as might be necessary.
+  Follow the official documenation for installing powershell 6 for relevant operating system version and platform here https://github.com/PowerShell/PowerShell . For Windows 7 install "Windows 10 Universal C Runtime" might be necessary.
 * Script execution policy should be set to unrestricted
 ```powershell
 PS> Set-ExecutionPolicy -ExecutionPolicy Unrestricted
