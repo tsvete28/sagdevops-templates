@@ -53,8 +53,7 @@ sagcc exec templates composite apply sag-spm-boot-winrm nodes=["host1","host2"] 
   install.dir=C:\SoftwareaAG2 \
   spm.port=8292 \
   os.username=sagadmin os.password=**** \
-  skip.runtime.validation=true
-```
+  ```
 
 > NOTE: skip.runtime.validation=true is to avoid SSH validation error
 
@@ -69,12 +68,8 @@ sagcc create stacks DevWin01 layers alias=WinInfra layerType=INFRA-REMOTE-WINDOW
   install.dir=C:\\SoftwareaAG2 \
   spm.port=8292 \
   os.username=sagadmin os.password=**** \
-  skip.runtime.validation=true
 ```
 
-Known problems:
-
-* SSH validation must be skipped via `skip.runtime.validation=true`
 
 ## Using from Stacks UI
 
