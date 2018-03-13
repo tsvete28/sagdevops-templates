@@ -5,29 +5,29 @@
 ### System requirements for the target Windows machines
 
 * Windows 2007 or later
-* DotNet 4.5 or higher (prerequisite for recent powershell versions). Follow the official documenation for installing or upgrading dotNet Framework here:https://www.microsoft.com/net/download/windows
+* DotNet 4.5 or higher (prerequisite for recent powershell versions). Follow the official documentation for installing or upgrading dotNet Framework here: https://www.microsoft.com/net/download/windows
 * Powershell version 5.0 or higher. 
-  Follow the official documenation for upgrading to powershell 5.1 for relevant operating system version and platform here https://www.microsoft.com/en-us/download/details.aspx?id=54616 (have in mind that this requires restart)
+  Follow the official documentation for upgrading to powershell 5.1 for relevant operating system version and platform here https://www.microsoft.com/en-us/download/details.aspx?id=54616 (have in mind that this requires restart)
 
 * The connecting user account must have Administrator privileges
 * WinRM service must be enabled
 * Memory used by powershell should be at 2GB limit or more
 
-Run these commands from the powershell window as Administrator to ensure the last two requirements:
+Run these commands from the powershell window as Administrator to meet the last two requirements:
 
 ```powershell
 PS> Enable-PSRemoting -SkipNetworkProfileCheck
 PS> Set-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB 2048
 ```
-Note: Although, for production it is not recommended to keep WinRM enabled, here are the steps to enable it at boot time:
-* Open Services tool (Win+R -> services.msc), locate service "Windows Remote Management (WS-Management)" and in properties change the start type to: "Autostart"
-* Open Group Policy Editor (Win+R -> gpedit.msc) , go to Computer Configuration -> Administrative Templates -> Windows Components -> Windows Remote Services -> WinRM Service, open Allow remote server management through WinRM, click enabled and add * to IPv4 filter.
+NOTE: Although it is not recommended to keep WinRM enabled when in production, here are the steps to enable it at boot time:
+* Open Services tool (Win+R -> services.msc), locate the service "Windows Remote Management (WS-Management)", go to the service properties and change the start type to "Autostart"
+* Open Group Policy Editor (Win+R -> gpedit.msc) , go to Computer Configuration -> Administrative Templates -> Windows Components -> Windows Remote Services -> WinRM Service, open "Allow remote server management" through WinRM, click "enabled," and add `*` to the IPv4 filter.
 
 
 
 ### Requirements for Command Central machine
 
-* Windows 2007 of later
+* Windows 2007 or later
 * DotNet 4.5 or higher (prerequisite for recent powershell versions). Follow the official documenation for installing or upgrading dotNet Framework here:https://www.microsoft.com/net/download/windows
 * Powershell version 6 or later.
   Follow the official documenation for installing powershell 6 for relevant operating system version and platform here https://github.com/PowerShell/PowerShell . For Windows 7 install "Windows 10 Universal C Runtime" might be necessary.
